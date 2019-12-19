@@ -10,10 +10,56 @@
 <body class="">
     <header></header>
     <main class=""> 
-                
-                <form class="container_form"> 
-
-                </form>
+          <form class="needs-validation" novalidate>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip01">Nom</label>
+                <input type="text" class="form-control" id="nom" value="Mark" required>
+                <div class="valid-tooltip">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip02">Prenom</label>
+                <input type="text" class="form-control" id="prenom" value="Otto" required>
+                <div class="valid-tooltip">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltipUsername">Identifiant</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="identifiant" aria-describedby="validationTooltipUsernamePrepend" required>
+                  <div class="invalid-tooltip">
+                    Please choose a unique and valid username.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationTooltip03">Ville</label>
+                <input type="text" class="form-control" id="ville" required>
+                <div class="invalid-tooltip">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationTooltip04">Pays</label>
+                <select class="custom-select" id="pays" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option>...</option>
+                </select>
+                <div class="invalid-tooltip">
+                  Please select a valid state.
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+          </form>
     </main>
     <footer></footer>
 </body>

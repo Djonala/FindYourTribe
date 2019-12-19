@@ -56,11 +56,6 @@ function onContentLoaded() {
 
 }
 
-// Get the button, and when the user clicks on it, execute myFunction
-document.getElementById("imageMario").onclick = function(){selectionPersonnage()};
-function selectionPersonnage(){
-
-}
 
 function onFormSubmit(event) {
                             // au submit du formulaire, le navigateur va donc déclencer l'exécution de
@@ -75,10 +70,12 @@ function onFormSubmit(event) {
                            // Ensuite, on valide les champs un par un
   const prenomInput = checkPrenom()
   const nomInput = checkNom()
-  const emailInput = checkEmail()
+  const identifiantInput = checkIdentifiant()
+  const villeInput = checkVille()
+  const paysInput = checkPays()
   
   if (prenomInput && nomInput && emailInput) {
-    fetch('/pageChoixJeu', {
+    fetch('/inscription', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -86,7 +83,10 @@ function onFormSubmit(event) {
       body: JSON.stringify({
         prenom : prenomInput,
         nom : nomInput,
-        email: emailInput
+        identifiant : identifiantInput,
+        ville : villeInput,
+        pays : paysInput
+
       })
     }).then(function(response) {
       console.log(response);
@@ -148,23 +148,58 @@ function checkNom() {
     return nom.value;
   }
 }
-//idem email-----------------------------------------------------------
-function checkEmail() {
-  const spanErrorMessageId = 'email-error-message';
-  const email = document.getElementById('email');
+//idem identifiant-----------------------------------------------------------
+function checkIdentifiant() {
+  const spanErrorMessageId = 'identifiant-error-message';
+  const identifiant = document.getElementById('identifiant');
   const appendSpan = function(span) {
     email.after(span);
   }
 
-  if (!shouldNotBeNull(email)) {
+  if (!shouldNotBeNull(identifiant)) {
     displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
-  } else if (!shouldHaveLength(email, 2)) {
-    displayErrorMessage(spanErrorMessageId, 'L\'email doit être renseigné obligatoirement', appendSpan);
+  } else if (!shouldHaveLength(identifiant, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'L\'identifiant doit être renseigné obligatoirement', appendSpan);
   } else {
     removeErrorMessage(spanErrorMessageId);
-    return email.value;
+    return identifiant.value;
   }
 }
+//idem ville ----------------------------------------------------------
+function checkVille() {
+    const spanErrorMessageId = 'ville-error-message';
+    const ville = document.getElementById('ville');
+    const appendSpan = function(span) {
+      ville.after(span);
+    }
+  
+    if (!shouldNotBeNull(ville)) {
+      displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+    } else if (!shouldHaveLength(ville, 2)) {
+      displayErrorMessage(spanErrorMessageId, 'La ville doit être renseigné obligatoirement', appendSpan);
+    } else {
+      removeErrorMessage(spanErrorMessageId);
+      return ville.value;
+    }
+  }
+
+//idem pays-----------------------------------------------------------
+function checkPays() {
+    const spanErrorMessageId = 'pays-error-message';
+    const ville = document.getElementById('pays');
+    const appendSpan = function(span) {
+      pays.after(span);
+    }
+  
+    if (!shouldNotBeNull(pays)) {
+      displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+    } else if (!shouldHaveLength(pays, 2)) {
+      displayErrorMessage(spanErrorMessageId, 'Le pays doit être renseigné obligatoirement', appendSpan);
+    } else {
+      removeErrorMessage(spanErrorMessageId);
+      return pays.value;
+    }
+  }
 
 //------ Fonction du fichier validation --------------------------------------------
             // Cette fonction prend en paramètre un input
