@@ -1,5 +1,10 @@
 const express = require('express')
+const apiRouter = require('./router')
 const app = express()
+
+app.use(express.static('public'))
+app.use(express.json())
+app.use('/inscription', apiRouter.router)
 
 app.get('/ping', function(request, response) {
   response.send('pong')
