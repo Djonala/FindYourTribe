@@ -5,62 +5,101 @@
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="findyourtribe.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <title></title>
 <body class="">
-    <header></header>
+    <header>     
+      <nav class="containerNavbarTop">
+        <div class="containerNavLogo">
+          <img src="logoFindYourTribe.png" alt="logo" id="logo">
+        </div>
+        <div class="containerNavLink">
+            <ul>
+              <li><a href="#">ACCUEIL</a></li>
+              <li><a href="#">ANNONCES</a></li>
+              <li><a href="#">INSCRIPTION</a></li>
+              <li><a href="#">CONNEXION</a></li>
+            </ul>
+        </div>
+      </nav>
+    </header>
+
     <main class=""> 
-          <form class="needs-validation" novalidate>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="validationTooltip01">Nom</label>
-                <input type="text" class="form-control" id="nom" value="Mark" required>
-                <div class="valid-tooltip">
-                  Looks good!
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationTooltip02">Prenom</label>
-                <input type="text" class="form-control" id="prenom" value="Otto" required>
-                <div class="valid-tooltip">
-                  Looks good!
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationTooltipUsername">Identifiant</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="identifiant" aria-describedby="validationTooltipUsernamePrepend" required>
-                  <div class="invalid-tooltip">
-                    Please choose a unique and valid username.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="validationTooltip03">Ville</label>
-                <input type="text" class="form-control" id="ville" required>
-                <div class="invalid-tooltip">
-                  Please provide a valid city.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="validationTooltip04">Pays</label>
-                <select class="custom-select" id="pays" required>
-                  <option selected disabled value="">Choose...</option>
-                  <option>...</option>
-                </select>
-                <div class="invalid-tooltip">
-                  Please select a valid state.
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-primary" type="submit">Envoyer</button>
-          </form>
+      <div class="titrePage">
+        <h2>L'inscription est gratuite !</h2>
+        <h4>Créez votre compte FindYourTribe pour répondre aux annonces et en poster de nouvelles !</h4>
+      </div>
+
+      <form class="containerForm">
+        <div>
+          <label for="formNom">Nom </label>
+          <input type="text" name="nom" id="formNom"><br>
+        </div>
+
+        <div>
+          <label for="prenom">Prenom </label>
+          <input type="text" name="prenom" id="formPrenom"><br>
+        </div>
+
+        <div>
+          <label for="ddn">Date de naissance </label>
+          <input type="date" name="ddn" id="formDdn"><br>
+        </div>
+
+        <div>
+          <label for="departement">Departement </label>
+          <select name="département" id="formDepartement">
+            <option value="44">44 - Loire Atlantique</option>
+            <option value="85">85 - Vendée</option>
+            <option value="49">49 - Maine et Loire</option>
+          </select><br>
+        </div>
+
+        <div>
+          <label for="ville"> Ville </label>
+          <input type="text" name="ville" id="formVille"><br>
+        </div>
+
+        <div>
+          <label for="email">Email </label>
+          <input type="email" name="email" id="formEmail"><br>
+        </div>
+
+        <div>
+          <label for="instrument">Vos talents </label>
+          <select name="instrument" id="formInstrument">
+            <option value="chant">Chant</option>
+            <option value="guitare">Guitare</option>
+            <option value="basse">Basse</option>
+            <option value="baterie">Baterie</option>
+          </select><br>
+        </div>
+
+        <div>
+          <label for="pseudo">Pseudo </label>
+          <input type="text" name="pseudo" id="formPseudo">
+        </div>
+        
+        <div>
+          <label for="motdepasse">Mot de passe </label>
+          <input type="password" name="motdepasse" id="formMdp"><br>
+        </div>
+
+        <div>
+          <label for="confirmationmotdepasse">Confirmation </label>
+          <input type="password" name="confirmationmotdepasse" id="formConfirmationMdp"><br>
+        </div>
+
+        <div>
+          <label for="avatar">Avatar </label>
+          <input type="file" name="avatar" id="formAvatar">
+        </div>
+      </form>
     </main>
-    <footer></footer>
+
+    <footer>
+
+    </footer>
 </body>
 </html>
