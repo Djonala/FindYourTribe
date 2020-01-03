@@ -65,28 +65,39 @@ function onFormSubmit(event) {
                             // Et pour éviter la soumission par défaut du formulaire, il faut l'annuler
                             // en appelant preventDefault() sur l'événement du navigateur pour lui indiquer
                             // de ne rien faire lorsque le formulaire est soumis.
-    event.preventDefault();
+  event.preventDefault();
                             // Ensuite, on récupère à la main les informations saisie dans les input
                            // Ensuite, on valide les champs un par un
-  const prenomInput = checkPrenom()
-  const nomInput = checkNom()
-  const identifiantInput = checkIdentifiant()
-  const villeInput = checkVille()
-  const paysInput = checkPays()
-  
-  if (prenomInput && nomInput && emailInput) {
+  const formPrenom = checkPrenom()
+  const formNom = checkNom()
+  const formDDN = checkDDN()
+  const formEmail = checkEmail()
+  const formDepartement = checkDepartement()
+  const formVille = checkVille()
+  const formInstrument = checkInstrument()
+  const formNomUtilisateur = checkNomUtilisateur()
+  const formMDP = checkMDP()
+  const formConfirmationMDP = checkConfirmationMDP()
+  const formAvatar = checkAvatar()
+ 
+  if (formPrenom && formNom && formDDN && formEmail && formDepartement && formVille && formInstrument && formNomUtilisateur && formMDP && formConfirmationMDP && formAvatar) {
     fetch('/inscription', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
-        prenom : prenomInput,
-        nom : nomInput,
-        identifiant : identifiantInput,
-        ville : villeInput,
-        pays : paysInput
-
+        prenom : formPrenom,
+        nom : formNom,
+        DDN : formDDN,
+        email : formEmail,
+        departement : formDepartement,
+        ville : formVille,
+        instrument : formInstrument,
+        nomUtilisateur : formNomUtilisateur,
+        motDePasse : formMDP,
+        confirmationMotDePasse : formConfirmationMDP,
+        avatar : formAvatar
       })
     }).then(function(response) {
       console.log(response);
@@ -98,13 +109,13 @@ function onFormSubmit(event) {
 }
 
 
-//-----------------------------------------------
+//------------------------prenom-------
 function checkPrenom() {
                       // défini l'id du span de message d'erreur que l'on va 
                       // réutiliser dans les fonctions 'displayErrorMessage'
   const spanErrorMessageId = 'prenom-error-message';
                       // recherche l'input 'prenom'
-  const prenom = document.getElementById('prenom');
+  const prenom = document.getElementById('formPrenom');
                       // défini la fonction callback de la fonction 'displayErrorMessage'
                       // qui sera appelée une fois le span créé par displayErrorMessage
                       // car c'est ici que l'on sait ou le span doit se placer.
@@ -131,10 +142,10 @@ function checkPrenom() {
   }
 }
 
-// idem name1-------------------------------------------------------
+// idem nom------------------------------------------------------
 function checkNom() {
   const spanErrorMessageId = 'nom-error-message';
-  const nom = document.getElementById('nom');
+  const nom = document.getElementById('formNom');
   const appendSpan = function(span) {
     nom.after(span);
   }
@@ -148,58 +159,165 @@ function checkNom() {
     return nom.value;
   }
 }
-//idem identifiant-----------------------------------------------------------
-function checkIdentifiant() {
-  const spanErrorMessageId = 'identifiant-error-message';
-  const identifiant = document.getElementById('identifiant');
+//date de naissance-----------------------------------------------------------
+function checkDDN() {
+  const spanErrorMessageId = 'DDN-error-message';
+  const DDN = document.getElementById('formDDN');
   const appendSpan = function(span) {
-    email.after(span);
+    DDN.after(span);
   }
 
-  if (!shouldNotBeNull(identifiant)) {
+  if (!shouldNotBeNull(DDN)) {
     displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
-  } else if (!shouldHaveLength(identifiant, 2)) {
-    displayErrorMessage(spanErrorMessageId, 'L\'identifiant doit être renseigné obligatoirement', appendSpan);
+  } else if (!shouldHaveLength(DDN, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'La date de naissance doit être renseigné obligatoirement', appendSpan);
   } else {
     removeErrorMessage(spanErrorMessageId);
-    return identifiant.value;
+    return DDN.value;
   }
 }
-//idem ville ----------------------------------------------------------
-function checkVille() {
-    const spanErrorMessageId = 'ville-error-message';
-    const ville = document.getElementById('ville');
+//idem Email----------------------------------------------------------
+function checkEmail() {
+    const spanErrorMessageId = 'email-error-message';
+    const email = document.getElementById('formEmail');
     const appendSpan = function(span) {
-      ville.after(span);
+      email.after(span);
     }
   
-    if (!shouldNotBeNull(ville)) {
+    if (!shouldNotBeNull(email)) {
       displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
-    } else if (!shouldHaveLength(ville, 2)) {
-      displayErrorMessage(spanErrorMessageId, 'La ville doit être renseigné obligatoirement', appendSpan);
+    } else if (!shouldHaveLength(email, 2)) {
+      displayErrorMessage(spanErrorMessageId, 'L\'email doit être renseigné obligatoirement', appendSpan);
     } else {
       removeErrorMessage(spanErrorMessageId);
-      return ville.value;
+      return email.value;
     }
   }
 
-//idem pays-----------------------------------------------------------
-function checkPays() {
-    const spanErrorMessageId = 'pays-error-message';
-    const ville = document.getElementById('pays');
+//idem departement-----------------------------------------------------------
+function checkDepartement() {
+    const spanErrorMessageId = 'departement-error-message';
+    const departement = document.getElementById('formDepartement');
     const appendSpan = function(span) {
-      pays.after(span);
+      departement.after(span);
     }
   
-    if (!shouldNotBeNull(pays)) {
+    if (!shouldNotBeNull(departement)) {
       displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
-    } else if (!shouldHaveLength(pays, 2)) {
-      displayErrorMessage(spanErrorMessageId, 'Le pays doit être renseigné obligatoirement', appendSpan);
+    } else if (!shouldHaveLength(departement, 2)) {
+      displayErrorMessage(spanErrorMessageId, 'Le departement doit être renseigné obligatoirement', appendSpan);
     } else {
       removeErrorMessage(spanErrorMessageId);
-      return pays.value;
+      return departement.value;
     }
   }
+
+  //idem ville -----------------------------------------------------------
+function checkVille() {
+  const spanErrorMessageId = 'ville-error-message';
+  const ville = document.getElementById('formVille');
+  const appendSpan = function(span) {
+    ville.after(span);
+  }
+
+  if (!shouldNotBeNull(ville)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(ville, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'La ville doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return ville.value;
+  }
+}
+
+//idem instrument-----------------------------------------------------------
+function checkInstrument() {
+  const spanErrorMessageId = 'instrument-error-message';
+  const instrument = document.getElementById('formInstrument');
+  const appendSpan = function(span) {
+    instrument.after(span);
+  }
+
+  if (!shouldNotBeNull(instrument)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(instrument, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'L\'instrument doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return instrument.value;
+  }
+}
+
+//idem nom utilisateur-----------------------------------------------------------
+function checkNomUtilisateur() {
+  const spanErrorMessageId = 'nom-utilisateur-error-message';
+  const nomUtilisateur = document.getElementById('formNomUtilisateur');
+  const appendSpan = function(span) {
+    nomUtilisateur.after(span);
+  }
+
+  if (!shouldNotBeNull(nomUtilisateur)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(nomUtilisateur, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'Le nom utilisateur doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return nomUtilisateur.value;
+  }
+}
+
+//idem mot de passe-----------------------------------------------------------
+function checkMDP() {
+  const spanErrorMessageId = 'mdp-error-message';
+  const MDP = document.getElementById('formMDP');
+  const appendSpan = function(span) {
+    MDP.after(span);
+  }
+
+  if (!shouldNotBeNull(MDP)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(MDP, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'Le mot de passe doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return MDP.value;
+  }
+}
+
+//idem confirmation mot de passe-----------------------------------------------------------
+function checkConfirmationMDP() {
+  const spanErrorMessageId = 'confirmation-MDP-error-message';
+  const confirmationMDP = document.getElementById('formConfirmationMDP');
+  const appendSpan = function(span) {
+    confirmationMDP.after(span);
+  }
+
+  if (!shouldNotBeNull(confirmationMDP)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(confirmationMDP, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'La confirmation du mot de passe doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return confirmationMDP.value;
+  }
+}
+//idem avatar-----------------------------------------------------------
+function checkAvatar() {
+  const spanErrorMessageId = 'avatar-error-message';
+  const avatar = document.getElementById('formAvatar');
+  const appendSpan = function(span) {
+    avatar.after(span);
+  }
+
+  if (!shouldNotBeNull(avatar)) {
+    displayErrorMessage(spanErrorMessageId, 'Champ obligatoire', appendSpan);
+  } else if (!shouldHaveLength(avatar, 2)) {
+    displayErrorMessage(spanErrorMessageId, 'L\'avatar doit être renseigné obligatoirement', appendSpan);
+  } else {
+    removeErrorMessage(spanErrorMessageId);
+    return avatar.value;
+  }
+}
 
 //------ Fonction du fichier validation --------------------------------------------
             // Cette fonction prend en paramètre un input

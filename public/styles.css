@@ -97,7 +97,10 @@ main {
     margin-top: 2vh;
 }
 
-
+span {
+    text-align: center;
+    color:#216869ff;
+}
 
 
 /* ------------------------------ A DEFINIR -------------------------*/
