@@ -2,10 +2,12 @@
 <html lang="fr">
 <head> 
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles.css"> 
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="findyourtribe.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
 </head>
 <title></title>
 <body class="">
@@ -23,6 +25,14 @@
             </ul>
         </div>
       </nav>
+      <div class="baniereEntete">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
     </header>
 
     <main class=""> 
@@ -31,69 +41,91 @@
         <h4>Créez votre compte FindYourTribe pour répondre aux annonces et en poster de nouvelles !</h4>
       </div>
 
-      <form class="containerForm">
-        <div>
-          <label for="formNom">Nom </label>
-          <input type="text" name="nom" id="formNom"><br>
-        </div>
 
-        <div>
-          <label for="prenom">Prenom </label>
-          <input type="text" name="prenom" id="formPrenom"><br>
-        </div>
+      <form class="needs-validation" novalidate> <!-- class containerForm -->
+        <div class="row justify-content-md-center">
+          <div class="col-lg-2">
+            <label for="formNom">Nom </label>
+            <input type="text" name="nom" class="form-control" id="formNom"><br>
+          </div>
 
-        <div>
+          <div class="col-lg-2">
+            <label for="prenom">Prenom </label>
+            <input type="text" class="form-control" name="prenom" id="formPrenom"><br>
+          </div>
+      </div>
+
+
+      <div class="row justify-content-md-center">
+        <div class="col-lg-2">
           <label for="ddn">Date de naissance </label>
-          <input type="date" name="ddn" id="formDdn"><br>
+          <input type="date" name="ddn" class="form-control"  id="formDdn"><br>
         </div>
-
-        <div>
-          <label for="departement">Departement </label>
-          <select name="département" id="formDepartement">
-            <option value="44">44 - Loire Atlantique</option>
-            <option value="85">85 - Vendée</option>
-            <option value="49">49 - Maine et Loire</option>
-          </select><br>
-        </div>
-
-        <div>
-          <label for="ville"> Ville </label>
-          <input type="text" name="ville" id="formVille"><br>
-        </div>
-
-        <div>
+        <div class="col-lg-2">
           <label for="email">Email </label>
-          <input type="email" name="email" id="formEmail"><br>
+          <input type="email" name="email" id="formEmail" class="form-control" ><br>
+        </div>
+      </div>
+
+
+        <div class="row justify-content-md-center">
+          <div class="col-lg-2">
+            <label for="departement">Departement </label>
+            <select name="département" id="formDepartement" class="form-control" >
+              <option value="44">44 - Loire Atlantique</option>
+              <option value="85">85 - Vendée</option>
+              <option value="49">49 - Maine et Loire</option>
+            </select><br>
+          </div>
+          <div class="col-lg-2">
+            <label for="ville"> Ville </label>
+            <input type="text" name="ville" id="formVille" class="form-control" ><br>
+          </div>
+        </div>       
+
+
+        <div class="row justify-content-md-center">
+          <div class="col-lg-2">
+            <label for="instrument">Vos talents </label>
+            <select name="instrument" id="formInstrument" class="form-control" >
+              <option value="chant">Chant</option>
+              <option value="guitare">Guitare</option>
+              <option value="basse">Basse</option>
+              <option value="baterie">Baterie</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            <label for="pseudo">Nom d'utilisateur </label>
+            <input type="text" name="pseudo" id="formPseudo" class="form-control" >
+          </div>
         </div>
 
-        <div>
-          <label for="instrument">Vos talents </label>
-          <select name="instrument" id="formInstrument">
-            <option value="chant">Chant</option>
-            <option value="guitare">Guitare</option>
-            <option value="basse">Basse</option>
-            <option value="baterie">Baterie</option>
-          </select><br>
+        <div class="row justify-content-md-center">  
+          <div class="col-lg-2">
+              <label for="inputMDP">Mot de passe</label>
+              <input type="password" id="inputMDP" class="form-control" aria-describedby="passwordHelpInline">
+              <small id="passwordHelpInline" class="text-muted">
+                   doit contenir entre 8 et 20 caractères.
+              </small>
+          </div>
+          <div class="col-lg-2">
+            <label for="confirmationmotdepasse">Confirmation </label>
+            <input type="password" class="form-control" name="confirmationmotdepasse" id="formConfirmationMdp"><br>
+          </div>
         </div>
 
-        <div>
-          <label for="pseudo">Pseudo </label>
-          <input type="text" name="pseudo" id="formPseudo">
-        </div>
-        
-        <div>
-          <label for="motdepasse">Mot de passe </label>
-          <input type="password" name="motdepasse" id="formMdp"><br>
+
+        <div class="row justify-content-md-center">
+          <div class="col-lg-2">
+            <label for="avatar">Avatar </label>
+            <input type="file" name="avatar" id="formAvatar" class="form-control" >
+          </div>
         </div>
 
-        <div>
-          <label for="confirmationmotdepasse">Confirmation </label>
-          <input type="password" name="confirmationmotdepasse" id="formConfirmationMdp"><br>
-        </div>
-
-        <div>
-          <label for="avatar">Avatar </label>
-          <input type="file" name="avatar" id="formAvatar">
+        <div class="row justify-content-md-center">
+          <div class="col-lg-1">
+            <button type="submit" class="btn btn-info" id="buttonSubmit">Envoyer</button>
+          </div>
         </div>
       </form>
     </main>
@@ -101,5 +133,8 @@
     <footer>
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

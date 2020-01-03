@@ -14,6 +14,12 @@ main {
 .titrePage {
     color:#f3f3f3;
     text-align: center;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.baniereEntete {
+    background-image: url("../public/party-people-1644798_1920.jpg");
 }
 
 /* latin-ext */
@@ -86,34 +92,12 @@ main {
 }
 
 /* ------------------------------ PAGE INSCRIPTION -------------------------*/
-.containerForm {
-    display: flex;
-    flex-direction: column;
-    margin-left: 36%;
-    margin-right: 36%;
- }
- .containerForm div {
+
+#buttonSubmit {
     margin-top: 2vh;
-    align-items: center;
-    align-content: space-between;
- }
-
-.containerForm input, label, select {
-
-    display: flex;
-    float: right;
-    width: auto;
 }
 
-.containerForm label {
-    font-family: 'Nunito';
-    float: left;
-}
 
-.containerForm input, .containerForm select {
-
-
-}
 
 
 /* ------------------------------ A DEFINIR -------------------------*/
