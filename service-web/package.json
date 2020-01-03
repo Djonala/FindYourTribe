@@ -1,0 +1,19 @@
+{
+  "name": "service-web",
+  "version": "1.0.0",
+  "description": "site de rencontre entre musicien",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node src/app.js"
+  },
+  "author": "Johanna Tristan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djonala/FindYourTribe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Djonala/FindYourTribe/issues"
+  },
+  "homepage": "https://github.com/Djonala/FindYourTribe#readme"
+}
